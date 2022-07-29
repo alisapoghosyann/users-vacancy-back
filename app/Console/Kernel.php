@@ -10,12 +10,17 @@ class Kernel extends ConsoleKernel
     /**
      * Define the application's command schedule.
      *
-     * @param  \Illuminate\Console\Scheduling\Schedule  $schedule
+     * @param \Illuminate\Console\Scheduling\Schedule $schedule
      * @return void
      */
+    protected $commands = [
+        Commands\DailyUpdate::class
+    ];
+
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')->hourly();
+        $schedule->command('day:update')
+            ->everyMinute();
     }
 
     /**
@@ -23,10 +28,9 @@ class Kernel extends ConsoleKernel
      *
      * @return void
      */
+
     protected function commands()
     {
-        $this->load(__DIR__.'/Commands');
-
         require base_path('routes/console.php');
     }
 }

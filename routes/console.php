@@ -2,7 +2,7 @@
 
 use Illuminate\Foundation\Inspiring;
 use Illuminate\Support\Facades\Artisan;
-
+use \App\Console\Commands\DailyUpdate;
 /*
 |--------------------------------------------------------------------------
 | Console Routes
@@ -14,6 +14,6 @@ use Illuminate\Support\Facades\Artisan;
 |
 */
 
-Artisan::command('inspire', function () {
-    $this->comment(Inspiring::quote());
+Artisan::command('day:update', function () {
+    $this->comment(DailyUpdate::quote());
 })->purpose('Display an inspiring quote');
